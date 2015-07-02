@@ -1,2 +1,2 @@
-Java_2_BrandUP
-Web service that enables customer to order advertisement services
+BrandUP_Frontend
+Frontend part of the BrandUP project. Technologies used: HTML, CSS, JavaScript, AngularJS, Grunt, Bower, RequireJS
