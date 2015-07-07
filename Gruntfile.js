@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 			build: {
 				files: {
 					'build/assets/css/style.min.css': ['src/assets/css/*.css'],
-					'build/assets/js/script.min.js': ['src/assets/js/vendor/*.js', 'build/assets/js/script.min.js'],
+					'build/assets/js/script.min.js': ['bower_components/**/*.min.js', 'build/assets/js/script.min.js'],
 				},
 			},
 		},
