@@ -1,25 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>BrandUP</title>
+	<meta charset="utf-8"> 
 	<!-- build:js assets/js/script.min.js -->
 	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 	<script src="assets/js/firstApp.js"></script>
 	<script src="assets/js/firstController.js"></script>
 	<!-- endbuild -->
 	<!-- build:css assets/css/style.min.css -->
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
 	<!-- endbuild -->
 </head>
 <body ng-app="firstApp" ng-controller="firstController">
-	<h1>BrandUP - advertisement services<span id="phone"> - (0562)77-77-77</span></h1>
-	<br />
-	<h3>The site is under construction. Please, leave your message below, and we will response asap:</h3>
-	<textarea ng-model="message" cols="40" rows="10"></textarea>
-	<p>
-		<button ng-click="save()">Send</button>
-		<button ng-click="clear()">Clear</button>
-	</p>
-	<p>Number of characters left: <span ng-bind="left()"></span></p>
+	<div class="container">
+			<div class="row">
+				<div class="col-lg-9">BrandUP - advertisement services</div>
+				<div class="col-lg-3">(0562) 77-77-77</div>
+			</div>
+			<form role="form">
+				<div class="form-group">
+					<label for="comment">The site is under construction. Please, leave your message below, and we will response asap:</label>
+					<textarea ng-model="message" class="form-control" rows="10" id="comment"></textarea>
+				</div>
+				<button ng-click="save()" type="button" class="btn btn-outline-inverse btn-lg">
+					<span class="glyphicon glyphicon-envelope"></span> Send
+				</button>
+				<button ng-click="clear()" type="button" class="btn btn-outline-inverse btn-lg">
+					<span class="glyphicon glyphicon-pencil"></span> Clear
+				</button>
+			</form>
+			<p>Number of characters left: <span ng-bind="left()"></span></p>
+	</div>
 </body>
 </html>

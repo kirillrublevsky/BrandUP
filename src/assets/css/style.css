@@ -1,21 +1,50 @@
+p {}
+
 body {
-    color: gold;
-    background-color: cadetblue;
-    margin-left: 200px;
+	background-color: #563d7c;
+	color: #fff;
 }
 
-h1 {
-    color: orange;
+form {
+    margin-bottom: 50px; 
 }
 
-#phone {
-    color: white;
+form label {
+	margin-bottom: 10px; 
+	font-size: medium;
+	color: #cdbfe3;
 }
 
-h3 {
-    color: yellow;
+.row {
+    margin-top: 50px; 
+	margin-bottom: 50px; 
+	text-align: center;
+	font-size: xx-large;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(0,0,0,.15);
 }
 
-p {
-    color: navajowhite;
+.col-lg-9 {
+	text-align: left;
 }
+
+.col-lg-3 {
+	text-align: right;
+}
+
+.btn-outline-inverse {
+	color: #fff;
+	background-color: transparent;
+	border-color: #cdbfe3;
+	margin: 10px;
+}
+
+.btn-outline-inverse:hover, .btn-outline-inverse:focus, .btn-outline-inverse:active {
+	color: #563d7c;
+	text-shadow: none;
+	background-color: #fff;
+	border-color: #fff;
+}
+
+
+
