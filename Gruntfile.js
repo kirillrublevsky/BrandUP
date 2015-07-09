@@ -33,9 +33,9 @@ module.exports = function(grunt) {
 			},
 			build: {
 				files: {
-					'build/assets/css/style.min.css': ['bower_components/**/*.min.css', 'src/assets/css/style.css'],
-					'build/assets/js/script.min.js': ['bower_components/angular/angular.min.js', 
-					'bower_components/angular-bootstrap/ui-bootstrap-tpls.min', 'build/assets/js/script.min.js'],
+					'build/assets/css/style.min.css': ['bower_components/bootstrap/dist/css/bootstrap.min.css', 'src/assets/css/style.css'],
+					'build/assets/js/script.min.js': ['bower_components/angular/angular.min.js', 'bower_components/bootstrap/dist/js/bootstrap.min.js',
+					'bower_components/angular-bootstrap/ui-bootstrap.min', 'build/assets/js/script.min.js'],
 				},
 			},
 		},
