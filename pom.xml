@@ -18,6 +18,7 @@
 		<jackson-version>2.4.4</jackson-version>
 		<postgres.driver.version>9.3-1100-jdbc41</postgres.driver.version>
 		<cglib.version>3.1</cglib.version>
+		<jetty.version>8.1.16.v20140903</jetty.version>
 	</properties>
 
 	<dependencies>
@@ -92,6 +93,29 @@
 			<version>${jackson-version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+
 		<!-- servlet container provided dependencies -->
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
@@ -145,14 +169,9 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<configuration>
-					<path>/</path>
-					<httpsPort>8443</httpsPort>
-					<keystoreFile>${basedir}/other/keystore.jks</keystoreFile>
-					<keystorePass>secret</keystorePass>
-				</configuration>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
 			</plugin>
 		</plugins>
 	</build>
