@@ -1,4 +1,4 @@
-package com.skillsup.brandup.config.root;
+package com.skillsup.brandup.config;
 
 
 import org.springframework.context.annotation.Bean;
@@ -16,19 +16,13 @@ import javax.persistence.EntityManagerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * The root context configuration of the application - the beans in this context will be globally visible
- * in all servlet contexts.
- *
- */
 
 @Configuration
-//@ComponentScan({""})
-//@EnableTransactionManagement
+@ComponentScan("com.skillsup.brandup")
+@EnableTransactionManagement
 public class RootContextConfig {
 
-   /* @Bean(name = "transactionManager")
+    @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory,
                                                          DriverManagerDataSource dataSource) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
@@ -40,30 +34,31 @@ public class RootContextConfig {
     @Bean(name = "datasource")
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/calorie-tracker?loglevel=0");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("postgres");
+        dataSource.setDriverClassName("org.h2.Driver");
+        dataSource.setUrl("jdbc:h2:mem:dataSource;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false");
+        dataSource.setUsername("");
+        dataSource.setPassword("");
+
         return dataSource;
     }
 
     @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DriverManagerDataSource dataSource) {
 
-        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(dataSource);
-        entityManagerFactoryBean.setPackagesToScan(new String[]{"calories.tracker.app.model"});
-        entityManagerFactoryBean.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
-        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-
         Map<String, Object> jpaProperties = new HashMap<String, Object>();
         jpaProperties.put("hibernate.hbm2ddl.auto", "create-drop");
         jpaProperties.put("hibernate.show_sql", "true");
         jpaProperties.put("hibernate.format_sql", "true");
         jpaProperties.put("hibernate.use_sql_comments", "true");
-        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+
+        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+        entityManagerFactoryBean.setDataSource(dataSource);
+        entityManagerFactoryBean.setPackagesToScan(new String[]{"com.skillsup.brandup.dao"});
+        entityManagerFactoryBean.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
+        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         entityManagerFactoryBean.setJpaPropertyMap(jpaProperties);
 
         return entityManagerFactoryBean;
-    }*/
+    }
 }
