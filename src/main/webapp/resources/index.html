@@ -6,28 +6,76 @@
 	<link rel="stylesheet" type="text/css" href="/resources/assets/css/vendor/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/resources/assets/css/style.css"/>
 </head>
-<body ng-app="firstApp" ng-controller="firstController">
+<body ng-app="firstApp">
 	<div class="container">
 			<div class="row">
 				<div class="col-lg-9">BrandUP - advertisement services</div>
 				<div class="col-lg-3">(0562) 77-77-77</div>
 			</div>
-			<form role="form">
-				<div class="form-group">
-					<label for="comment">The site is under construction. Please, leave your message below, and we will response asap:</label>
-					<textarea ng-model="message" class="form-control" rows="10" id="comment" maxlength="200" onkeypress="isNotMax(this)"></textarea>
-				</div>
-				<button ng-click="send()" type="button" class="btn btn-outline-inverse btn-lg">
-					<span class="glyphicon glyphicon-envelope"></span> Send
-				</button>
-				<button ng-click="clear()" type="button" class="btn btn-outline-inverse btn-lg">
-					<span class="glyphicon glyphicon-pencil"></span> Clear
-				</button>
-			</form>
-			<p>Number of characters left: <span ng-bind="left()"></span></p>
+
+			<ul class="nav nav-pills">
+    		<li class="active"><a href="#/">Home</a></li>
+    		<li class="dropdown">
+    			<a class="dropdown-toggle" data-toggle="dropdown">Наружная реклама</a>
+    			<ul class="dropdown-menu">
+      				<li><a href="#/test">Вывески</a></li>
+      				<li><a href="#">Объёмные буквы</a></li>
+      				<li><a href="#">Штендеры</a></li>
+      				<li><a href="#">Лайтбоксы</a></li> 
+      				<li><a href="#">Оклейка витрин</a></li> 
+      				<li><a href="#">Указатели</a></li>  
+    			</ul>
+    		</li>
+    		<li class="dropdown">		
+    			<a class="dropdown-toggle" data-toggle="dropdown">Внутреняя реклама</a>
+    			<ul class="dropdown-menu">
+      				<li><a href="#">Офисные таблички</a></li>
+      				<li><a href="#">Интерьерные вывески</a></li>
+      				<li><a href="#">Статические рекламные конструкции</a></li>
+      				<li><a href="#">Брендирование пространства</a></li>
+      				<li><a href="#">Рекламное экспонирование</a></li>
+      				<li><a href="#">Рекламное декорирование</a></li> 
+    			</ul>
+    		</li>	<li class="dropdown">		
+    			<a class="dropdown-toggle" data-toggle="dropdown">PoS материалы</a>
+    			<ul class="dropdown-menu">
+      				<li><a href="#">Шелфтокеры</a></li>
+      				<li><a href="#">Ценникодержатели</a></li>
+      				<li><a href="#">Менюхолдеры</a></li> 
+      				<li><a href="#">Воблеры</a></li>
+      				<li><a href="#">Ценники</a></li>
+      				<li><a href="#">Стопперы</a></li>
+      				<li><a href="#">Промостойки</a></li>
+      				<li><a href="#">Диспенсеры</a></li>
+      				<li><a href="#">Пластиковые лотки</a></li>
+      				<li><a href="#">Флажки</a></li>
+      				<li><a href="#">Наклейки</a></li>
+    			</ul>
+    		</li>	<li class="dropdown">		
+    			<a class="dropdown-toggle" data-toggle="dropdown">Интерьерный декор</a>
+    			<ul class="dropdown-menu">
+      				<li><a href="#">Наклейки/стикеры на стены и окна</a></li>
+      				<li><a href="#">Объёмные буквы</a></li>
+      				<li><a href="#">Декор стен</a></li>
+      				<li><a href="#">Зеркальный декор</a></li>
+      				<li><a href="#">Постеры</a></li>
+    			</ul>
+    		</li>	<li class="dropdown">		
+    			<a class="dropdown-toggle" data-toggle="dropdown">Рекламная фотография</a>
+    			<ul class="dropdown-menu">
+      				<li><a href="#" title="Для буклетов, каталогов, календарей, постеров, упаковки">Фотография товаров</a></li>
+      				<li><a href="#" title="Фотогравия готовых блюд для меню, вывесок, холдеров">Фудстайлинг</a></li>
+      				<li><a href="#" title="Для каталогов, интернет-магазинов, корпоративной и представительской продукции">Интерьерная фотография</a></li> 
+    			</ul>
+    		</li>	
+    		</ul>
+
+    <div ng-view></div>     
 	</div>
+
 	<script src="/resources/assets/js/vendor/jquery.min.js"></script>
 	<script src="/resources/assets/js/vendor/angular.min.js"></script>
+  <script src="/resources/assets/js/vendor/angular-route.js"></script>
 	<script src="/resources/assets/js/vendor/bootstrap.min.js"></script>
 	<script src="/resources/assets/js/vendor/ui-bootstrap.min.js"></script>
 	<script src="/resources/assets/js/firstApp.js"></script>

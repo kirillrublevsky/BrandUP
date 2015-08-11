@@ -1,4 +1,8 @@
-app.controller("firstController", ['$scope', '$http', function($scope, $http) {
+
+var appControllers = angular.module('appControllers', []);
+
+
+appControllers.controller("ContactFormController", ['$scope', '$http', function($scope, $http) {
     $scope.message = "";
     $scope.left  = function() {return 200 - $scope.message.length;};
     $scope.clear = function() {$scope.message = "";};
@@ -15,3 +19,4 @@ app.controller("firstController", ['$scope', '$http', function($scope, $http) {
         $scope.message = "";
     };
 }]);
+
