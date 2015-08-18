@@ -8,7 +8,7 @@ appControllers.controller("ContactFormController", ['$scope', '$http', function(
     $scope.clear = function() {$scope.message = "";};
     $scope.send  = function() {
 
-        $http.post(baseURL + '/sendMessage', {'message' : $scope.message}).
+        $http.post('/sendMessage', {'message' : $scope.message}).
             success(function(data, status, headers, config) {
                 alert(angular.fromJson(data).contents);
             }).

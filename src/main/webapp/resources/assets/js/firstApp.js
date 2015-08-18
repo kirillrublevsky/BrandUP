@@ -8,11 +8,11 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/', {
-        templateUrl: 'contact-form.html',
+        templateUrl: 'resources/contact-form.html',
         controller: 'ContactFormController'
       }).
       when('/test', {
-        templateUrl: 'items/test.html',
+        templateUrl: 'resources/items/test.html',
         controller: 'TestController'
       }).
       otherwise({
