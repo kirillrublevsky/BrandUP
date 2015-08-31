@@ -1,4 +1,4 @@
-var app = angular.module("firstApp", [
+﻿var app = angular.module("firstApp", [
 	'ui.bootstrap',
 	'ngRoute',
   	'appControllers']);
@@ -7,13 +7,17 @@ var app = angular.module("firstApp", [
 app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/', {
-        templateUrl: 'resources/contact-form.html',
-        controller: 'ContactFormController'
+        when('/', {
+        templateUrl: 'resources/home.html',
+        controller: 'MainPageController'
       }).
-      when('/test', {
-        templateUrl: 'resources/items/test.html',
-        controller: 'TestController'
+        when('/items/:itemGroup/:itemId', {
+        templateUrl: '/resources/items.html',
+        controller: 'ItemsPageController'
+      }).
+      when('/contact', {
+        templateUrl: '/resources/contact-form.html',
+        controller: 'ContactFormController'
       }).
       otherwise({
         redirectTo: '/'

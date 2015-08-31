@@ -21,5 +21,6 @@ public class ServletContextConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("/resources/index.html");
+
     }
 }
