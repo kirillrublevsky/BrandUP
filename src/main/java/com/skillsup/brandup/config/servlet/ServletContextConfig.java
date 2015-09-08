@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.skillsup.brandup.controller")
+@ComponentScan("com.skillsup.brandup.app.controller")
 public class ServletContextConfig extends WebMvcConfigurerAdapter {
 
 

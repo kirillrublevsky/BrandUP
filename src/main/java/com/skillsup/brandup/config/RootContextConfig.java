@@ -18,7 +18,7 @@ import java.util.Map;
 
 
 @Configuration
-@ComponentScan("com.skillsup.brandup")
+@ComponentScan("com.skillsup.brandup.app")
 @EnableTransactionManagement
 public class RootContextConfig {
 
@@ -54,7 +54,7 @@ public class RootContextConfig {
 
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
-        entityManagerFactoryBean.setPackagesToScan(new String[]{"com.skillsup.brandup.dao"});
+        entityManagerFactoryBean.setPackagesToScan("com.skillsup.brandup.app.dao");
         entityManagerFactoryBean.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         entityManagerFactoryBean.setJpaPropertyMap(jpaProperties);
