@@ -1,6 +1,5 @@
 package com.skillsup.brandup.config;
 
-import com.skillsup.brandup.config.servlet.ServletContextConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 

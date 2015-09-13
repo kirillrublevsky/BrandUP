@@ -18,17 +18,26 @@ appControllers.controller("ItemsPageCtrl", ['$scope', '$routeParams', '$http', f
 }]);
 
 appControllers.controller("ContactFormCtrl", ['$scope', '$http', function ($scope, $http) {
+    $scope.formData = {};
     $scope.send = function () {
 
         $http.post('/sendMessage', $scope.message).
-            success(function () {
-                alert('Hello');
-                $('#contactForm').hide();
-            }).
-            error(function (data, status, headers, config) {
-                alert("Exception details: " + "data:");
+            success(function (data) {
+                console.log(data);
+
+                if (!data.success) {
+                    // if not successful, bind errors to error variables
+                    $scope.errorName = "Введите имя";
+                    $scope.errorEmail = "Введите email";
+                } else {
+                    // if successful, bind success message to message
+                    $scope.message = data.message;
+                    $scope.errorName = "";
+                    $scope.errorSuperhero = "";
+                    $('#contactForm').hide();
+                }
+
             });
-        $scope.message = "";
     };
 }]);
 

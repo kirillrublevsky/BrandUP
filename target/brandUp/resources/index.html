@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="mainApp">
+<head>
+    <title>BrandUP</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/resources/assets/css/vendor/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/resources/assets/css/style.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7">BrandUP - advertisement services</div>
+        <div class="col-lg-3">(0562)77-77-77</div>
+        <div class="col-lg-2">
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#contactForm">
+                Задать вопрос
+            </button>
+        </div>
+    </div>
+    <div ng-include="'/resources/assets/views/navigation-bar.html'"></div>
+    <div ng-view></div>
+    <div ng-include="'/resources/assets/views/contact-form.html'"></div>
+</div>
+
+<script src="/resources/assets/js/vendor/jquery.min.js"></script>
+<script src="/resources/assets/js/vendor/angular.min.js"></script>
+<script src="/resources/assets/js/vendor/angular-route.js"></script>
+<script src="/resources/assets/js/vendor/bootstrap.min.js"></script>
+<script src="/resources/assets/js/vendor/ui-bootstrap.min.js"></script>
+<script src="/resources/assets/js/app.js"></script>
+<script src="/resources/assets/js/controllers.js"></script>
+</body>
+</html>
