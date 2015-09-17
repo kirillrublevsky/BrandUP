@@ -12,33 +12,50 @@
             </div>
             <div class="modal-body">
                 <!-- SHOW ERROR/SUCCESS MESSAGES -->
-                <div id="messages" class="well" ng-show="message">{{ message }}</div>
+                <div id="messages" class="alert alert-success" ng-show="messages" ng-bind="messages"></div>
+
                 <!-- FORM -->
-                <form role="form">
+                <form name="form" novalidate role="form">
+
                     <!-- NAME -->
-                    <div class="form-group" ng-class="{ 'has-error' : errorName }">
-                        <input type="text" name="name" class="form-control"
-                               placeholder="Ваше имя" ng-model="formData.name">
-                        <span class="help-block" ng-show="errorName">{{ errorName }}</span>
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Ваше имя*" ng-model="name" required/>
+                        <span class="help-block" ng-show="submitted && form.name.$error.required">Введите имя</span>
                     </div>
+
+                    <!-- TELEPHONE -->
+                    <div class="form-group">
+                        <input type="tel" name="phone" class="form-control"
+                               placeholder="Ваш телефон" ng-model="phone" ng-maxlength="10" ng-minlength="10"
+                               ng-pattern="/^\d{10}$/"/>
+                        <span class="help-block"
+                              ng-show="submitted && form.phone.$invalid">Телефон должен содержать 10 цифр</span>
+                    </div>
+
                     <!-- EMAIL -->
-                    <div class="form-group" ng-class="{ 'has-error' : errorEmail }">
+                    <div class="form-group">
                         <input type="email" name="email" class="form-control"
-                               placeholder="Ваш email" ng-model="formData.email">
-                        <span class="help-block" ng-show="errorEmail">{{ errorEmail }}</span>
+                               placeholder="Ваш email*" ng-model="email" required/>
+                        <span class="help-block"
+                              ng-show="submitted && form.email.$error.required">Введите email</span>
+                        <span class="help-block"
+                              ng-show="submitted && form.email.$error.email">Неверный формат email</span>
                     </div>
+
                     <!-- MESSAGE -->
                     <div class="form-group">
-                        <textarea ng-model="message" class="form-control"
-                                  placeholder="Ваше сообщение" rows="7" maxlength="300"
+                        <textarea name="message" ng-model="message" class="form-control"
+                                  placeholder="Ваше сообщение*" rows="7" maxlength="255"
                                   onkeypress="isNotMax(this)" required></textarea>
+                        <span class="help-block"
+                              ng-show="submitted && form.message.$error.required">Введите сообщение</span>
                     </div>
-                    <div id="msg"></div>
                 </form>
 
             </div>
+            <!-- SUBMIT BUTTON -->
             <div class="modal-footer">
-                <button ng-click="send()" type="button" class="btn btn-primary btn-lg">Отправить</button>
+                <button ng-click="submit(form)" type="button" class="btn btn-primary btn-lg">Отправить</button>
             </div>
 
         </div>

@@ -17,27 +17,46 @@ appControllers.controller("ItemsPageCtrl", ['$scope', '$routeParams', '$http', f
 
 }]);
 
-appControllers.controller("ContactFormCtrl", ['$scope', '$http', function ($scope, $http) {
-    $scope.formData = {};
-    $scope.send = function () {
+appControllers.controller("ContactFormCtrl", ['$scope', '$http', '$log', '$timeout', function ($scope, $http, $log, $timeout) {
 
-        $http.post('/sendMessage', $scope.message).
-            success(function (data) {
-                console.log(data);
+    $scope.submit = function (form) {
 
-                if (!data.success) {
-                    // if not successful, bind errors to error variables
-                    $scope.errorName = "Введите имя";
-                    $scope.errorEmail = "Введите email";
-                } else {
-                    // if successful, bind success message to message
-                    $scope.message = data.message;
-                    $scope.errorName = "";
-                    $scope.errorSuperhero = "";
+        $scope.submitted = true;
+
+        if (form.$invalid) {
+            return;
+        }
+
+        var message = {
+            "name": $scope.name,
+            "phone": $scope.phone,
+            "email": $scope.email,
+            "contents": $scope.message
+        };
+
+        $http.post('/sendMessage', message)
+            .success(function (data, status, headers, config) {
+                $scope.name = null;
+                $scope.phone = null;
+                $scope.email = null;
+                $scope.message = null;
+                $scope.messages = 'Ваше сообщение успешно отправлено!';
+                $scope.submitted = false;
+            })
+            .error(function (data, status, headers, config) {
+                $scope.messages = 'Неполадки с сервером. Попробуйте позже';
+                $log.error(data);
+            })
+            .finally(function () {
+                $timeout(function () {
+                    $scope.messages = null;
+                }, 3000);
+                $timeout(function () {
                     $('#contactForm').hide();
-                }
-
+                }, 2000);
             });
+
+
     };
 }]);
 
